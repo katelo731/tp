@@ -58,4 +58,20 @@ public class Features {
         }
         System.out.println(BOTTOM_LINE);
     }
+
+    /**
+     * Removes an article/articles from the list.
+     * @param category - The given category to find articles.
+     * @param articleID - Article ID in a category.
+     */
+    public void remove(String category, Integer articleID) {
+        if (articleID == null) {
+            System.out.println(HEADER_LINE);
+            printInCenter("You are going to remove all articles in this category!");
+            System.out.println(BOTTOM_LINE);
+            savedArticles.removeIf(savedArticle -> Article.category.equals(category));
+        } else {
+            savedArticles.remove(articleID);
+        }
+    }
 }
