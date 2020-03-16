@@ -73,7 +73,8 @@ public class Features {
         } else {
             savedArticles.remove(articleID);
      }
-
+        
+    /**
      * Deletes an article from the saved list articles.
      * @param command - command given by the user.
      */
