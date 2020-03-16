@@ -11,6 +11,11 @@ public class Features {
 
     public static ArrayList<Article> savedArticles;
     public static ArrayList<Article> viewArticles;
+
+    public Features(ArrayList<Article> saved, ArrayList<Article> view) {
+        this.savedArticles = saved;
+        this.viewArticles = view;
+    }
     
     /**
     * Add an article found outside the program.
@@ -45,16 +50,11 @@ public class Features {
 
     /**
      * Lists all saved articles by category.
-     * @param category - The command given by the user.
      */
-    public void list(String category) {
+    public void list() {
         System.out.println(HEADER_LINE);
         for (Article savedArticle : savedArticles) {
-            if (!category.isEmpty()) {
-                printInCenter(savedArticle.toString());
-            } else if (Article.category.equals(category)) {
-                printInCenter(savedArticle.toString());
-            }
+            System.out.println(savedArticle);
         }
         System.out.println(BOTTOM_LINE);
     }
@@ -72,6 +72,14 @@ public class Features {
             savedArticles.removeIf(savedArticle -> Article.category.equals(category));
         } else {
             savedArticles.remove(articleID);
-        }
+     }
+
+     * Deletes an article from the saved list articles.
+     * @param command - command given by the user.
+     */
+    public void delete(String command) {
+        int articleNum = Integer.parseInt(command) - 1;
+        Article toDelete = savedArticles.get(articleNum);
+        savedArticles.remove(toDelete);
     }
 }
