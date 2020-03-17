@@ -7,22 +7,15 @@ import seedu.techtoday.Ui;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import org.json.JSONObject;
+import static seedu.techtoday.apiview.JsonReader.newsList;
+import seedu.techtoday.apiview.JsonArrayCreator;
+
 
 public class TechToday {
     public static boolean isRunning = true;
     public static ArrayList<Article> savedArticles = new ArrayList<>();
-    public static ArrayList<Article> viewArticles;
-
-    /**
-     * Function that updates defaults for view articles.
-     */
-    public static void getViewArticles() {
-        viewArticles.add(new Article("Hackers Hit US health agency during coronavirus crisis","https://www.cnet.com/news/hackers-hit-us-health-agency-during-coronavirus-crisis/", "default"));
-        viewArticles.add(new Article("Microsoft Releases Xbox Series X specs, controller details","https://www.cnet.com/news/microsoft-releases-xbox-series-x-specs-controller-details/", "default"));
-        viewArticles.add(new Article("Apple find @1.2B by France's competition watchdog", "https://www.cnet.com/news/apple-fined-1-2b-by-frances-competition-watchdog/", "default"));
-        viewArticles.add(new Article("Windows 10 is now on 1 billion devices", "https://www.cnet.com/news/windows-10-is-now-on-1-billion-devices/", "default"));
-        viewArticles.add(new Article("Apple announces $149 Powerbeats with 15 hours of battery life", "https://www.theverge.com/2020/3/16/21181279/apple-beats-powerbeats-4-wireless-earbuds-announced-features", "default"));
-    }
+    public static ArrayList<Article> viewArticles = new ArrayList<>();
 
     /**
      * Main entry-point for the java.techtoday application.
@@ -30,15 +23,29 @@ public class TechToday {
     public static void main(String[] args) {
         greet();
         Ui ui = new Ui(savedArticles);
+        String title1 = "Global oil use heads for steepest annual contraction";
+        String url1 = "https://www.worldoil.com/news/2020/3/15/global-oil-use-heads-for-steepest-annual-contraction-in-history";
+        Article article1 = new Article(title1, url1, "default");
+        String title2 = "Example title";
+        String url2 = "www.example.com";
+        viewArticles.add(article1);
+//        Article article2 = new Article(title2, url2, "default");
+//        viewArticles.add(article2, 2);
         Features features = new Features(savedArticles, viewArticles);
-        getViewArticles();
         while (isRunning) {
             String userResponse = ui.getCommand();
             String command = userResponse.split(" ")[0];
             String restOfUserInput = userResponse.replace(command, "").trim();
 
             if (command.equals("view")) {
-                ui.printArticles(viewArticles);
+                try {
+                    JsonReader.viewNewNews();
+                    //viewArticles = JsonArrayCreator.execute(newsList);
+                    //System.out.println(viewArticles.get(1));
+                } catch (IOException e){
+                    //We do no need to print anything here because
+                    // this exception is already handled at the method level
+                }
             } else if (command.equals("save")) {
                 features.saveView(restOfUserInput);
             } else if (command.equals("list")) {

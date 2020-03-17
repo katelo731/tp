@@ -7,6 +7,7 @@ import static seedu.techtoday.common.Messages.HEADER_LINE;
 import static seedu.techtoday.common.Messages.BOTTOM_LINE;
 import static seedu.techtoday.common.Messages.printInCenter;
 
+
 public class Features {
 
     public static ArrayList<Article> savedArticles;
