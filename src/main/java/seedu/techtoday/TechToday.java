@@ -29,8 +29,8 @@ public class TechToday {
         String title2 = "Example title";
         String url2 = "www.example.com";
         viewArticles.add(article1);
-//        Article article2 = new Article(title2, url2, "default");
-//        viewArticles.add(article2, 2);
+//      Article article2 = new Article(title2, url2, "default");
+//      viewArticles.add(article2, 2);
         Features features = new Features(savedArticles, viewArticles);
         while (isRunning) {
             String userResponse = ui.getCommand();
@@ -42,7 +42,7 @@ public class TechToday {
                     JsonReader.viewNewNews();
                     //viewArticles = JsonArrayCreator.execute(newsList);
                     //System.out.println(viewArticles.get(1));
-                } catch (IOException e){
+                } catch (IOException e) {
                     //We do no need to print anything here because
                     // this exception is already handled at the method level
                 }

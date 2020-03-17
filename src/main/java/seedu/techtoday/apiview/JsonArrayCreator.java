@@ -32,16 +32,16 @@ public class JsonArrayCreator {
             String key = keys.next();
             String object = json.getString(key);
             System.out.println(object);
-           // String title = object.getString("title");
-            //String url = object.getString("url");
-            //System.out.println(title);
-//            JSONObject detailsOfKey = new JSONObject(newsList.get(key));
-//            System.out.println(detailsOfKey.toString());
-//            String title = detailsOfKey.getString("title");
-//            System.out.println(title);
-//            String url = detailsOfKey.getString("url");
-            //Article article = new Article(title, url, "default");
-            //articlesViewed.add(article);
+//          String title = object.getString("title");
+//          String url = object.getString("url");
+//          System.out.println(title);
+//          JSONObject detailsOfKey = new JSONObject(newsList.get(key));
+//          System.out.println(detailsOfKey.toString());
+//          String title = detailsOfKey.getString("title");
+//          System.out.println(title);
+//          String url = detailsOfKey.getString("url");
+//          Article article = new Article(title, url, "default");
+//          articlesViewed.add(article);
         }
         return articlesViewed;
     }
